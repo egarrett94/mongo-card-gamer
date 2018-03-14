@@ -1,7 +1,7 @@
 {
   "name": "basic-mern-boilerplate",
   "version": "1.0.0",
-  "description": "",
+  "description": "## You must implement the POST route to add a new game.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,7 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mongoose": "^5.0.10"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egarrett94/mongo-card-gamer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/egarrett94/mongo-card-gamer/issues"
+  },
+  "homepage": "https://github.com/egarrett94/mongo-card-gamer#readme"
 }

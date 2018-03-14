@@ -48,7 +48,28 @@ class App extends Component {
   }
   handleSubmit(e) {
     // Add your code here to handle adding a new game to the database
-  }
+    // need to figure out what we're posting. where does the data live? in state
+    axios.post('/api/cardgames', {
+      name: this.state.nameVal,
+      minPlayers: this.state.minVal,
+      maxPlayers: this.state.maxVal
+    }).then(result => {
+      console.log(result)
+      //clear state/box values? 
+      let gamesCopy = Array.from(this.state.games);
+      gamesCopy.push({
+        name: this.state.nameVal,
+        minPlayers: this.state.minVal,
+        maxPlayers: this.state.maxVal
+      });
+      this.setState({
+        games: gamesCopy,
+        nameVal: '',
+        minVal: '',
+        maxVal: ''
+      });
+    });
+  };
 
   // API call goes here so that data is available after component mounts
   componentDidMount() {
@@ -59,12 +80,17 @@ class App extends Component {
     })
   }
 
+
+
   render() {
     return (
       <div>
         <GameList onGameClick={this.handleGameClick} games={this.state.games} />
         <GameDetail game={this.state.current} />
         <AddGameForm
+          nameVal={this.state.nameVal}
+          minVal={this.state.minVal}
+          maxVal={this.state.maxVal}
           onNameChange={this.handleNameChange}
           onMinChange={this.handleMinChange}
           onMaxChange={this.handleMaxChange}
